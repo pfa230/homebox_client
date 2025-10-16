@@ -36,6 +36,7 @@ python -m pip install -r test-requirements.txt
 ```
 
 The editable install keeps the package in sync with the working tree, while `test-requirements.txt` pulls in tooling such as `pytest`, `mypy`, and `flake8`.
+It also installs `python-dotenv`, which enables utility scripts to read credentials from a local `.env` file.
 
 ## Configuring the client
 
@@ -115,6 +116,10 @@ Review the contents of `/local/generated`, then copy the updated modules into th
 - Multi-environment runs: `tox`
 
 All commands operate from the project root. Combine them in CI to guard against regressions.
+
+## Utility scripts
+
+- `scripts/test_homebox_api.py`: smoke-tests authentication and the `/v1/status` endpoint using the environment variables `HOMEBOX_API_URL`, `HOMEBOX_USERNAME`, and `HOMEBOX_PASSWORD`. The script loads these values from `.env` automatically via `python-dotenv`, so run `pip install -r test-requirements.txt` (or install `python-dotenv` manually) before executing it.
 
 ## Support
 
