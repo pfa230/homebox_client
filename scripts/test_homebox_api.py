@@ -6,9 +6,15 @@ from __future__ import annotations
 import os
 import sys
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Dict, Iterable
 
 from dotenv import load_dotenv
+
+# Ensure the repository root is on sys.path so the local package is importable
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from homebox_client import ApiClient, AuthenticationApi, BaseApi, Configuration
 from homebox_client.exceptions import ApiException
@@ -64,13 +70,13 @@ def _authenticate(config: Configuration, credentials: ApiCredentials) -> str:
     """Authenticate against the Homebox API and return a bearer token."""
     with ApiClient(config) as unauthenticated_client:
         auth_api = AuthenticationApi(unauthenticated_client)
-        response = auth_api.v1_users_login_post(
+        token_response = auth_api.v1_users_login_post(
             username=credentials.username,
             password=credentials.password,
             stay_logged_in=True,
         )
 
-    token = response.token
+    token = token_response.token
     if not token:
         raise RuntimeError("Login succeeded but the API returned an empty token.")
     return token

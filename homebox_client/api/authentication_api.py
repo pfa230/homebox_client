@@ -293,7 +293,7 @@ class AuthenticationApi:
         _files: Dict[
             str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
         ] = {}
-        _body_params: Optional[bytes] = None
+        _body_params: Optional[Any] = None
 
         # process the path parameters
         # process the query parameters
@@ -303,13 +303,16 @@ class AuthenticationApi:
             
         # process the header parameters
         # process the form parameters
+        _payload: Dict[str, Any] = {}
         if password is not None:
-            _form_params.append(('password', password))
+            _payload['password'] = password
         if stay_logged_in is not None:
-            _form_params.append(('stayLoggedIn', stay_logged_in))
+            _payload['stayLoggedIn'] = stay_logged_in
         if username is not None:
-            _form_params.append(('username', username))
+            _payload['username'] = username
         # process the body parameter
+        if _payload:
+            _body_params = _payload
 
 
         # set the HTTP header `Accept`
@@ -327,8 +330,8 @@ class AuthenticationApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/x-www-form-urlencoded', 
-                        'application/json'
+                        'application/json',
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
@@ -828,5 +831,4 @@ class AuthenticationApi:
             _host=_host,
             _request_auth=_request_auth
         )
-
 
