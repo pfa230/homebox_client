@@ -45,5 +45,5 @@ setup(
     long_description="""\
     Track, Manage, and Organize your Things.
     """,  # noqa: E501
-    package_data={"homebox_client": ["py.typed"]},
+    package_data={"homebox_client": ["py.typed", "*.pyi"]},
 )

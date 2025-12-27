@@ -16,8 +16,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from homebox_client import ApiClient, AuthenticationApi, BaseApi, Configuration
-from homebox_client.exceptions import ApiException
+from homebox_client import ApiClient, AuthenticationApi, BaseApi, Configuration  # noqa: E402
+from homebox_client.exceptions import ApiException  # noqa: E402
 
 REQUIRED_ENV_VARS: Iterable[str] = (
     "HOMEBOX_API_URL",
@@ -33,7 +33,7 @@ class MissingEnvironmentVariable(RuntimeError):
 def _load_required_env() -> Dict[str, str]:
     """Fetch required environment variables and error if any are unset."""
     values: Dict[str, str] = {}
-    missing = []
+    missing: list[str] = []
 
     for name in REQUIRED_ENV_VARS:
         value = os.getenv(name)
