@@ -8,6 +8,7 @@ from ...types import Response, UNSET
 from ... import errors
 
 from ...models.repo_item_attachment_update import RepoItemAttachmentUpdate
+from ...models.repo_item_out import RepoItemOut
 from typing import cast
 
 
@@ -41,14 +42,21 @@ def _get_kwargs(
 
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[RepoItemOut]:
+    if response.status_code == 200:
+        response_200 = RepoItemOut.from_dict(response.json())
+
+
+
+        return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[RepoItemOut]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +72,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RepoItemAttachmentUpdate,
 
-) -> Response[Any]:
+) -> Response[RepoItemOut]:
     """ Update Item Attachment
 
     Args:
@@ -77,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[RepoItemOut]
      """
 
 
@@ -94,15 +102,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
-
-async def asyncio_detailed(
+def sync(
     id: str,
     attachment_id: str,
     *,
     client: AuthenticatedClient,
     body: RepoItemAttachmentUpdate,
 
-) -> Response[Any]:
+) -> Optional[RepoItemOut]:
     """ Update Item Attachment
 
     Args:
@@ -115,7 +122,39 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        RepoItemOut
+     """
+
+
+    return sync_detailed(
+        id=id,
+attachment_id=attachment_id,
+client=client,
+body=body,
+
+    ).parsed
+
+async def asyncio_detailed(
+    id: str,
+    attachment_id: str,
+    *,
+    client: AuthenticatedClient,
+    body: RepoItemAttachmentUpdate,
+
+) -> Response[RepoItemOut]:
+    """ Update Item Attachment
+
+    Args:
+        id (str):
+        attachment_id (str):
+        body (RepoItemAttachmentUpdate):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[RepoItemOut]
      """
 
 
@@ -132,3 +171,34 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+async def asyncio(
+    id: str,
+    attachment_id: str,
+    *,
+    client: AuthenticatedClient,
+    body: RepoItemAttachmentUpdate,
+
+) -> Optional[RepoItemOut]:
+    """ Update Item Attachment
+
+    Args:
+        id (str):
+        attachment_id (str):
+        body (RepoItemAttachmentUpdate):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        RepoItemOut
+     """
+
+
+    return (await asyncio_detailed(
+        id=id,
+attachment_id=attachment_id,
+client=client,
+body=body,
+
+    )).parsed

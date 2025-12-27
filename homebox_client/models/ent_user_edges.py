@@ -12,8 +12,8 @@ from typing import Union
 
 if TYPE_CHECKING:
   from ..models.ent_auth_tokens import EntAuthTokens
-  from ..models.ent_group import EntGroup
   from ..models.ent_notifier import EntNotifier
+  from ..models.ent_group import EntGroup
 
 
 
@@ -43,8 +43,8 @@ class EntUserEdges:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.ent_auth_tokens import EntAuthTokens
-        from ..models.ent_group import EntGroup
         from ..models.ent_notifier import EntNotifier
+        from ..models.ent_group import EntGroup
         auth_tokens: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.auth_tokens, Unset):
             auth_tokens = []
@@ -86,8 +86,8 @@ class EntUserEdges:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ent_auth_tokens import EntAuthTokens
-        from ..models.ent_group import EntGroup
         from ..models.ent_notifier import EntNotifier
+        from ..models.ent_group import EntGroup
         d = dict(src_dict)
         auth_tokens = []
         _auth_tokens = d.pop("auth_tokens", UNSET)

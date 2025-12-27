@@ -11,9 +11,9 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
+  from ..models.repo_template_location_summary import RepoTemplateLocationSummary
   from ..models.repo_template_field import RepoTemplateField
   from ..models.repo_template_label_summary import RepoTemplateLabelSummary
-  from ..models.repo_template_location_summary import RepoTemplateLocationSummary
 
 
 
@@ -76,9 +76,9 @@ class RepoItemTemplateOut:
 
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.repo_template_location_summary import RepoTemplateLocationSummary
         from ..models.repo_template_field import RepoTemplateField
         from ..models.repo_template_label_summary import RepoTemplateLabelSummary
-        from ..models.repo_template_location_summary import RepoTemplateLocationSummary
         created_at = self.created_at
 
         default_description = self.default_description
@@ -187,9 +187,9 @@ class RepoItemTemplateOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.repo_template_location_summary import RepoTemplateLocationSummary
         from ..models.repo_template_field import RepoTemplateField
         from ..models.repo_template_label_summary import RepoTemplateLabelSummary
-        from ..models.repo_template_location_summary import RepoTemplateLocationSummary
         d = dict(src_dict)
         created_at = d.pop("createdAt", UNSET)
 

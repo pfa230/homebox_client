@@ -12,8 +12,8 @@ from typing import cast, Union
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.repo_location_summary import RepoLocationSummary
   from ..models.repo_label_summary import RepoLabelSummary
+  from ..models.repo_location_summary import RepoLocationSummary
 
 
 
@@ -66,8 +66,8 @@ class RepoItemSummary:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.repo_location_summary import RepoLocationSummary
         from ..models.repo_label_summary import RepoLabelSummary
+        from ..models.repo_location_summary import RepoLocationSummary
         archived = self.archived
 
         asset_id = self.asset_id
@@ -161,8 +161,8 @@ class RepoItemSummary:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.repo_location_summary import RepoLocationSummary
         from ..models.repo_label_summary import RepoLabelSummary
+        from ..models.repo_location_summary import RepoLocationSummary
         d = dict(src_dict)
         archived = d.pop("archived", UNSET)
 

@@ -11,8 +11,8 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_item import EntItem
   from ..models.ent_attachment import EntAttachment
+  from ..models.ent_item import EntItem
 
 
 
@@ -39,8 +39,8 @@ class EntAttachmentEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_item import EntItem
         from ..models.ent_attachment import EntAttachment
+        from ..models.ent_item import EntItem
         item: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.item, Unset):
             item = self.item.to_dict()
@@ -65,8 +65,8 @@ class EntAttachmentEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_item import EntItem
         from ..models.ent_attachment import EntAttachment
+        from ..models.ent_item import EntItem
         d = dict(src_dict)
         _item = d.pop("item", UNSET)
         item: Union[Unset, EntItem]

@@ -4,6 +4,7 @@
 """Pre-generation fixups for Homebox OpenAPI JSON.
 
 - Deduplicate enum values (and align x-enum-varnames when present)
+- Normalize known wildcard response content types
 """
 
 from __future__ import annotations
@@ -48,6 +49,40 @@ def _walk_enums(obj: Any) -> None:
             _walk_enums(value)
 
 
+_RESPONSE_CONTENT_TYPE_OVERRIDES: dict[tuple[str, str, str], str] = {
+    ("get", "/v1/items/export", "200"): "text/csv",
+    ("put", "/v1/items/{id}/attachments/{attachment_id}", "200"): "application/json",
+    ("put", "/v1/notifiers/{id}", "200"): "application/json",
+}
+
+
+def _override_response_content_types(doc: dict[str, Any]) -> None:
+    paths = doc.get("paths")
+    if not isinstance(paths, dict):
+        return
+
+    for path, operations in paths.items():
+        if not isinstance(operations, dict):
+            continue
+        for method, operation in operations.items():
+            if not isinstance(operation, dict):
+                continue
+            key = (method.lower(), path, "200")
+            override = _RESPONSE_CONTENT_TYPE_OVERRIDES.get(key)
+            if not override:
+                continue
+            responses = operation.get("responses")
+            if not isinstance(responses, dict):
+                continue
+            response = responses.get("200")
+            if not isinstance(response, dict):
+                continue
+            content = response.get("content")
+            if not isinstance(content, dict) or "*/*" not in content:
+                continue
+            content[override] = content.pop("*/*")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Preprocess Homebox OpenAPI JSON for generation.")
     parser.add_argument("input", type=Path, help="Input OpenAPI JSON")
@@ -56,6 +91,7 @@ def main() -> int:
 
     data = json.loads(args.input.read_text())
     _walk_enums(data)
+    _override_response_content_types(data)
 
     args.output.write_text(json.dumps(data, indent=2) + "\n")
     return 0

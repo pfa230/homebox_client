@@ -11,13 +11,13 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
+  from ..models.ent_attachment import EntAttachment
+  from ..models.ent_label import EntLabel
   from ..models.ent_item_field import EntItemField
   from ..models.ent_group import EntGroup
   from ..models.ent_maintenance_entry import EntMaintenanceEntry
   from ..models.ent_location import EntLocation
   from ..models.ent_item import EntItem
-  from ..models.ent_attachment import EntAttachment
-  from ..models.ent_label import EntLabel
 
 
 
@@ -57,13 +57,13 @@ class EntItemEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.ent_attachment import EntAttachment
+        from ..models.ent_label import EntLabel
         from ..models.ent_item_field import EntItemField
         from ..models.ent_group import EntGroup
         from ..models.ent_maintenance_entry import EntMaintenanceEntry
         from ..models.ent_location import EntLocation
         from ..models.ent_item import EntItem
-        from ..models.ent_attachment import EntAttachment
-        from ..models.ent_label import EntLabel
         attachments: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.attachments, Unset):
             attachments = []
@@ -149,13 +149,13 @@ class EntItemEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ent_attachment import EntAttachment
+        from ..models.ent_label import EntLabel
         from ..models.ent_item_field import EntItemField
         from ..models.ent_group import EntGroup
         from ..models.ent_maintenance_entry import EntMaintenanceEntry
         from ..models.ent_location import EntLocation
         from ..models.ent_item import EntItem
-        from ..models.ent_attachment import EntAttachment
-        from ..models.ent_label import EntLabel
         d = dict(src_dict)
         attachments = []
         _attachments = d.pop("attachments", UNSET)

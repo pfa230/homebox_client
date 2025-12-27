@@ -11,8 +11,8 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_group import EntGroup
   from ..models.ent_user import EntUser
+  from ..models.ent_group import EntGroup
 
 
 
@@ -39,8 +39,8 @@ class EntNotifierEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_group import EntGroup
         from ..models.ent_user import EntUser
+        from ..models.ent_group import EntGroup
         group: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.group, Unset):
             group = self.group.to_dict()
@@ -65,8 +65,8 @@ class EntNotifierEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_group import EntGroup
         from ..models.ent_user import EntUser
+        from ..models.ent_group import EntGroup
         d = dict(src_dict)
         _group = d.pop("group", UNSET)
         group: Union[Unset, EntGroup]

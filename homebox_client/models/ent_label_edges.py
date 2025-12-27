@@ -11,8 +11,8 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_item import EntItem
   from ..models.ent_group import EntGroup
+  from ..models.ent_item import EntItem
 
 
 
@@ -39,8 +39,8 @@ class EntLabelEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_item import EntItem
         from ..models.ent_group import EntGroup
+        from ..models.ent_item import EntItem
         group: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.group, Unset):
             group = self.group.to_dict()
@@ -70,8 +70,8 @@ class EntLabelEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_item import EntItem
         from ..models.ent_group import EntGroup
+        from ..models.ent_item import EntItem
         d = dict(src_dict)
         _group = d.pop("group", UNSET)
         group: Union[Unset, EntGroup]
