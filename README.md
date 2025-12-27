@@ -89,6 +89,7 @@ if page and not isinstance(page.items, Unset):
 - The original OpenAPI document: `homebox.json`.
 - Models live under `homebox_client/models`.
 - Endpoint modules live under `homebox_client/api`.
+- [Upstream Homebox docs](https://github.com/sysadminsmedia/homebox/tree/main/docs)
 
 ## Regenerating the client
 
