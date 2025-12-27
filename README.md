@@ -96,14 +96,13 @@ If the upstream API specification changes, regenerate the SDK with `openapi-pyth
 
 ```sh
 cp ../homebox/docs/en/api/openapi-3.0.json homebox.json
-python scripts/pregen_fixup.py homebox.json /tmp/homebox_fixed.json
+python scripts/pregen_fixup.py homebox.json homebox_fixed.json
 openapi-python-client generate \
-  --path /tmp/homebox_fixed.json \
+  --path homebox_fixed.json \
   --config openapi-python-client.yml \
   --meta none \
-  --output-path /tmp/homebox_pyclient \
+  --output-path homebox_client \
   --overwrite
-rsync -a /tmp/homebox_pyclient/ homebox_client/
 touch homebox_client/py.typed
 ```
 
