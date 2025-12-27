@@ -3,7 +3,7 @@ name = "homebox_client"
 version = "1.0.0"
 description = "Homebox API"
 authors = [
-  {name = "Homebox Team",email = "team@openapitools.org"},
+  {name = "pfa", email = "pfa230@pfa.name"},
 ]
 readme = "README.md"
 license = {text = "MIT"}
