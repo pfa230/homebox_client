@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.v1_users_self_put200_response import V1UsersSelfPut200Response
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of V1UsersSelfPut200Response from a JSON string
 v1_users_self_put200_response_instance = V1UsersSelfPut200Response.from_json(json)
 # print the JSON string representation of the object
-print(V1UsersSelfPut200Response.to_json())
+print(v1_users_self_put200_response_instance.to_json())
 
 # convert the object into a dict
 v1_users_self_put200_response_dict = v1_users_self_put200_response_instance.to_dict()

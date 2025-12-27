@@ -20,12 +20,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.v1_api_summary import V1APISummary
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of V1APISummary from a JSON string
 v1_api_summary_instance = V1APISummary.from_json(json)
 # print the JSON string representation of the object
-print(V1APISummary.to_json())
+print(v1_api_summary_instance.to_json())
 
 # convert the object into a dict
 v1_api_summary_dict = v1_api_summary_instance.to_dict()

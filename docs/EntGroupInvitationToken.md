@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_group_invitation_token import EntGroupInvitationToken
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntGroupInvitationToken from a JSON string
 ent_group_invitation_token_instance = EntGroupInvitationToken.from_json(json)
 # print the JSON string representation of the object
-print(EntGroupInvitationToken.to_json())
+print(ent_group_invitation_token_instance.to_json())
 
 # convert the object into a dict
 ent_group_invitation_token_dict = ent_group_invitation_token_instance.to_dict()

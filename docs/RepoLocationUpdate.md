@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_location_update import RepoLocationUpdate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoLocationUpdate from a JSON string
 repo_location_update_instance = RepoLocationUpdate.from_json(json)
 # print the JSON string representation of the object
-print(RepoLocationUpdate.to_json())
+print(repo_location_update_instance.to_json())
 
 # convert the object into a dict
 repo_location_update_dict = repo_location_update_instance.to_dict()

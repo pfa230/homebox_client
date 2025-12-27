@@ -19,12 +19,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_item_edges import EntItemEdges
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntItemEdges from a JSON string
 ent_item_edges_instance = EntItemEdges.from_json(json)
 # print the JSON string representation of the object
-print(EntItemEdges.to_json())
+print(ent_item_edges_instance.to_json())
 
 # convert the object into a dict
 ent_item_edges_dict = ent_item_edges_instance.to_dict()

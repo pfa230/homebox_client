@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_group import EntGroup
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntGroup from a JSON string
 ent_group_instance = EntGroup.from_json(json)
 # print the JSON string representation of the object
-print(EntGroup.to_json())
+print(ent_group_instance.to_json())
 
 # convert the object into a dict
 ent_group_dict = ent_group_instance.to_dict()

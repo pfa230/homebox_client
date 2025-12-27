@@ -21,12 +21,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_maintenance_entry import EntMaintenanceEntry
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntMaintenanceEntry from a JSON string
 ent_maintenance_entry_instance = EntMaintenanceEntry.from_json(json)
 # print the JSON string representation of the object
-print(EntMaintenanceEntry.to_json())
+print(ent_maintenance_entry_instance.to_json())
 
 # convert the object into a dict
 ent_maintenance_entry_dict = ent_maintenance_entry_instance.to_dict()

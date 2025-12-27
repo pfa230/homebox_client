@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_auth_roles_edges import EntAuthRolesEdges
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntAuthRolesEdges from a JSON string
 ent_auth_roles_edges_instance = EntAuthRolesEdges.from_json(json)
 # print the JSON string representation of the object
-print(EntAuthRolesEdges.to_json())
+print(ent_auth_roles_edges_instance.to_json())
 
 # convert the object into a dict
 ent_auth_roles_edges_dict = ent_auth_roles_edges_instance.to_dict()

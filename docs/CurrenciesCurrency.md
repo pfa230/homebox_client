@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.currencies_currency import CurrenciesCurrency
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of CurrenciesCurrency from a JSON string
 currencies_currency_instance = CurrenciesCurrency.from_json(json)
 # print the JSON string representation of the object
-print(CurrenciesCurrency.to_json())
+print(currencies_currency_instance.to_json())
 
 # convert the object into a dict
 currencies_currency_dict = currencies_currency_instance.to_dict()

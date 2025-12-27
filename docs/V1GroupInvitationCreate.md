@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.v1_group_invitation_create import V1GroupInvitationCreate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of V1GroupInvitationCreate from a JSON string
 v1_group_invitation_create_instance = V1GroupInvitationCreate.from_json(json)
 # print the JSON string representation of the object
-print(V1GroupInvitationCreate.to_json())
+print(v1_group_invitation_create_instance.to_json())
 
 # convert the object into a dict
 v1_group_invitation_create_dict = v1_group_invitation_create_instance.to_dict()

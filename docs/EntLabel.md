@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_label import EntLabel
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntLabel from a JSON string
 ent_label_instance = EntLabel.from_json(json)
 # print the JSON string representation of the object
-print(EntLabel.to_json())
+print(ent_label_instance.to_json())
 
 # convert the object into a dict
 ent_label_dict = ent_label_instance.to_dict()

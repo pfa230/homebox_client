@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_location_create import RepoLocationCreate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoLocationCreate from a JSON string
 repo_location_create_instance = RepoLocationCreate.from_json(json)
 # print the JSON string representation of the object
-print(RepoLocationCreate.to_json())
+print(repo_location_create_instance.to_json())
 
 # convert the object into a dict
 repo_location_create_dict = repo_location_create_instance.to_dict()

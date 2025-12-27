@@ -16,12 +16,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_value_over_time import RepoValueOverTime
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoValueOverTime from a JSON string
 repo_value_over_time_instance = RepoValueOverTime.from_json(json)
 # print the JSON string representation of the object
-print(RepoValueOverTime.to_json())
+print(repo_value_over_time_instance.to_json())
 
 # convert the object into a dict
 repo_value_over_time_dict = repo_value_over_time_instance.to_dict()

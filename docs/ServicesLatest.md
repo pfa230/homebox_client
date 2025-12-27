@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.services_latest import ServicesLatest
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of ServicesLatest from a JSON string
 services_latest_instance = ServicesLatest.from_json(json)
 # print the JSON string representation of the object
-print(ServicesLatest.to_json())
+print(services_latest_instance.to_json())
 
 # convert the object into a dict
 services_latest_dict = services_latest_instance.to_dict()

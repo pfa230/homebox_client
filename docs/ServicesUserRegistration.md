@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.services_user_registration import ServicesUserRegistration
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of ServicesUserRegistration from a JSON string
 services_user_registration_instance = ServicesUserRegistration.from_json(json)
 # print the JSON string representation of the object
-print(ServicesUserRegistration.to_json())
+print(services_user_registration_instance.to_json())
 
 # convert the object into a dict
 services_user_registration_dict = services_user_registration_instance.to_dict()

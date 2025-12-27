@@ -37,12 +37,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_item import EntItem
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntItem from a JSON string
 ent_item_instance = EntItem.from_json(json)
 # print the JSON string representation of the object
-print(EntItem.to_json())
+print(ent_item_instance.to_json())
 
 # convert the object into a dict
 ent_item_dict = ent_item_instance.to_dict()

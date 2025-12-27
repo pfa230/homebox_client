@@ -21,12 +21,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_user import EntUser
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntUser from a JSON string
 ent_user_instance = EntUser.from_json(json)
 # print the JSON string representation of the object
-print(EntUser.to_json())
+print(ent_user_instance.to_json())
 
 # convert the object into a dict
 ent_user_dict = ent_user_instance.to_dict()

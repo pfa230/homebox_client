@@ -19,12 +19,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_notifier_out import RepoNotifierOut
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoNotifierOut from a JSON string
 repo_notifier_out_instance = RepoNotifierOut.from_json(json)
 # print the JSON string representation of the object
-print(RepoNotifierOut.to_json())
+print(repo_notifier_out_instance.to_json())
 
 # convert the object into a dict
 repo_notifier_out_dict = repo_notifier_out_instance.to_dict()

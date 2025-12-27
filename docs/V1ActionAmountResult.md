@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.v1_action_amount_result import V1ActionAmountResult
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of V1ActionAmountResult from a JSON string
 v1_action_amount_result_instance = V1ActionAmountResult.from_json(json)
 # print the JSON string representation of the object
-print(V1ActionAmountResult.to_json())
+print(v1_action_amount_result_instance.to_json())
 
 # convert the object into a dict
 v1_action_amount_result_dict = v1_action_amount_result_instance.to_dict()

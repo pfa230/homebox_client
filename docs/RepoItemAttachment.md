@@ -20,12 +20,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_item_attachment import RepoItemAttachment
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoItemAttachment from a JSON string
 repo_item_attachment_instance = RepoItemAttachment.from_json(json)
 # print the JSON string representation of the object
-print(RepoItemAttachment.to_json())
+print(repo_item_attachment_instance.to_json())
 
 # convert the object into a dict
 repo_item_attachment_dict = repo_item_attachment_instance.to_dict()

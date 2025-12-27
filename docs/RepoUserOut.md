@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_user_out import RepoUserOut
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoUserOut from a JSON string
 repo_user_out_instance = RepoUserOut.from_json(json)
 # print the JSON string representation of the object
-print(RepoUserOut.to_json())
+print(repo_user_out_instance.to_json())
 
 # convert the object into a dict
 repo_user_out_dict = repo_user_out_instance.to_dict()

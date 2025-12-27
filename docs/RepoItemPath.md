@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_item_path import RepoItemPath
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoItemPath from a JSON string
 repo_item_path_instance = RepoItemPath.from_json(json)
 # print the JSON string representation of the object
-print(RepoItemPath.to_json())
+print(repo_item_path_instance.to_json())
 
 # convert the object into a dict
 repo_item_path_dict = repo_item_path_instance.to_dict()

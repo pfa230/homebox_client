@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_location_out_count import RepoLocationOutCount
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoLocationOutCount from a JSON string
 repo_location_out_count_instance = RepoLocationOutCount.from_json(json)
 # print the JSON string representation of the object
-print(RepoLocationOutCount.to_json())
+print(repo_location_out_count_instance.to_json())
 
 # convert the object into a dict
 repo_location_out_count_dict = repo_location_out_count_instance.to_dict()

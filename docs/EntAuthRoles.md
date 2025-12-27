@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_auth_roles import EntAuthRoles
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntAuthRoles from a JSON string
 ent_auth_roles_instance = EntAuthRoles.from_json(json)
 # print the JSON string representation of the object
-print(EntAuthRoles.to_json())
+print(ent_auth_roles_instance.to_json())
 
 # convert the object into a dict
 ent_auth_roles_dict = ent_auth_roles_instance.to_dict()

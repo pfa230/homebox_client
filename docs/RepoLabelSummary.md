@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_label_summary import RepoLabelSummary
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoLabelSummary from a JSON string
 repo_label_summary_instance = RepoLabelSummary.from_json(json)
 # print the JSON string representation of the object
-print(RepoLabelSummary.to_json())
+print(repo_label_summary_instance.to_json())
 
 # convert the object into a dict
 repo_label_summary_dict = repo_label_summary_instance.to_dict()

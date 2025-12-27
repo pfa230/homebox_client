@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_item_create import RepoItemCreate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoItemCreate from a JSON string
 repo_item_create_instance = RepoItemCreate.from_json(json)
 # print the JSON string representation of the object
-print(RepoItemCreate.to_json())
+print(repo_item_create_instance.to_json())
 
 # convert the object into a dict
 repo_item_create_dict = repo_item_create_instance.to_dict()

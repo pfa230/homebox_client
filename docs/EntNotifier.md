@@ -19,12 +19,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_notifier import EntNotifier
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntNotifier from a JSON string
 ent_notifier_instance = EntNotifier.from_json(json)
 # print the JSON string representation of the object
-print(EntNotifier.to_json())
+print(ent_notifier_instance.to_json())
 
 # convert the object into a dict
 ent_notifier_dict = ent_notifier_instance.to_dict()

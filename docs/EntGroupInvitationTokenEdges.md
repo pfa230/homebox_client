@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_group_invitation_token_edges import EntGroupInvitationTokenEdges
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntGroupInvitationTokenEdges from a JSON string
 ent_group_invitation_token_edges_instance = EntGroupInvitationTokenEdges.from_json(json)
 # print the JSON string representation of the object
-print(EntGroupInvitationTokenEdges.to_json())
+print(ent_group_invitation_token_edges_instance.to_json())
 
 # convert the object into a dict
 ent_group_invitation_token_edges_dict = ent_group_invitation_token_edges_instance.to_dict()

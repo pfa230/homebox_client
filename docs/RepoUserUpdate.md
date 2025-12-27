@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_user_update import RepoUserUpdate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoUserUpdate from a JSON string
 repo_user_update_instance = RepoUserUpdate.from_json(json)
 # print the JSON string representation of the object
-print(RepoUserUpdate.to_json())
+print(repo_user_update_instance.to_json())
 
 # convert the object into a dict
 repo_user_update_dict = repo_user_update_instance.to_dict()

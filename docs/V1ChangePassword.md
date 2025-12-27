@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.v1_change_password import V1ChangePassword
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of V1ChangePassword from a JSON string
 v1_change_password_instance = V1ChangePassword.from_json(json)
 # print the JSON string representation of the object
-print(V1ChangePassword.to_json())
+print(v1_change_password_instance.to_json())
 
 # convert the object into a dict
 v1_change_password_dict = v1_change_password_instance.to_dict()

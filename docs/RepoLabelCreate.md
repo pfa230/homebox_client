@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_label_create import RepoLabelCreate
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoLabelCreate from a JSON string
 repo_label_create_instance = RepoLabelCreate.from_json(json)
 # print the JSON string representation of the object
-print(RepoLabelCreate.to_json())
+print(repo_label_create_instance.to_json())
 
 # convert the object into a dict
 repo_label_create_dict = repo_label_create_instance.to_dict()

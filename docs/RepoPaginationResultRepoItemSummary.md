@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_pagination_result_repo_item_summary import RepoPaginationResultRepoItemSummary
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoPaginationResultRepoItemSummary from a JSON string
 repo_pagination_result_repo_item_summary_instance = RepoPaginationResultRepoItemSummary.from_json(json)
 # print the JSON string representation of the object
-print(RepoPaginationResultRepoItemSummary.to_json())
+print(repo_pagination_result_repo_item_summary_instance.to_json())
 
 # convert the object into a dict
 repo_pagination_result_repo_item_summary_dict = repo_pagination_result_repo_item_summary_instance.to_dict()

@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.ent_auth_tokens import EntAuthTokens
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of EntAuthTokens from a JSON string
 ent_auth_tokens_instance = EntAuthTokens.from_json(json)
 # print the JSON string representation of the object
-print(EntAuthTokens.to_json())
+print(ent_auth_tokens_instance.to_json())
 
 # convert the object into a dict
 ent_auth_tokens_dict = ent_auth_tokens_instance.to_dict()

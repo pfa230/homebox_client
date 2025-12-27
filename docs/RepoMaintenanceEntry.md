@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 ```python
 from homebox_client.models.repo_maintenance_entry import RepoMaintenanceEntry
 
-# TODO update the JSON string below
+# Example JSON string
 json = "{}"
 # create an instance of RepoMaintenanceEntry from a JSON string
 repo_maintenance_entry_instance = RepoMaintenanceEntry.from_json(json)
 # print the JSON string representation of the object
-print(RepoMaintenanceEntry.to_json())
+print(repo_maintenance_entry_instance.to_json())
 
 # convert the object into a dict
 repo_maintenance_entry_dict = repo_maintenance_entry_instance.to_dict()
