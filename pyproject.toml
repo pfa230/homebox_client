@@ -1,9 +1,9 @@
 [project]
-name = "homebox_client"
+name = "homebox-client"
 version = "1.0.0"
-description = "Homebox API"
+description = "Homebox API client"
 authors = [
-  {name = "pfa", email = "pfa230@pfa.name"},
+  {name = "pfa230", email = "pfa230@pfa.name"},
 ]
 readme = "README.md"
 license = {text = "MIT"}
@@ -16,7 +16,10 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/pfa230/homebox_client"
+Homepage = "https://github.com/pfa230/homebox_client"
+Source = "https://github.com/pfa230/homebox_client"
+Issues = "https://github.com/pfa230/homebox_client/issues"
+Documentation = "https://github.com/sysadminsmedia/homebox/tree/main/docs"
 
 [tool.poetry]
 requires-poetry = ">=2.0"

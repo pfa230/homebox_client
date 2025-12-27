@@ -31,8 +31,8 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Homebox API",
-    author="Homebox Team",
+    description="Homebox API client",
+    author="pfa230",
     author_email="pfa230@pfa.name",
     url="https://github.com/pfa230/homebox_client",
     keywords=["OpenAPI", "openapi-python-client", "Homebox API"],
