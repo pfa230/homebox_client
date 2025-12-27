@@ -95,7 +95,7 @@ if page and not isinstance(page.items, Unset):
 If the upstream API specification changes, regenerate the SDK with `openapi-python-client`:
 
 ```sh
-cp ../homebox/docs/en/api/openapi-3.0.json homebox.json
+curl -L -o homebox.json https://raw.githubusercontent.com/sysadminsmedia/homebox/main/docs/en/api/openapi-3.0.json
 python scripts/pregen_fixup.py homebox.json homebox_fixed.json
 openapi-python-client generate \
   --path homebox_fixed.json \
