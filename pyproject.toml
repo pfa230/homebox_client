@@ -6,6 +6,7 @@ authors = [
   {name = "Homebox Team",email = "team@openapitools.org"},
 ]
 readme = "README.md"
+license = {text = "MIT"}
 keywords = ["OpenAPI", "OpenAPI-Generator", "Homebox API"]
 requires-python = ">=3.9"
 

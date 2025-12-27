@@ -38,6 +38,7 @@ setup(
     author_email="team@openapitools.org",
     url="https://github.com/pfa230/homebox_client",
     keywords=["OpenAPI", "OpenAPI-Generator", "Homebox API"],
+    license="MIT",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

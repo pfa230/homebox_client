@@ -121,6 +121,10 @@ All commands operate from the project root. Combine them in CI to guard against 
 
 - `scripts/test_homebox_api.py`: smoke-tests authentication and the `/v1/status` endpoint using the environment variables `HOMEBOX_API_URL`, `HOMEBOX_USERNAME`, and `HOMEBOX_PASSWORD`. The script loads these values from `.env` automatically via `python-dotenv`, so run `pip install -r test-requirements.txt` (or install `python-dotenv` manually) before executing it.
 
+## License
+
+MIT. See `LICENSE`.
+
 ## Support
 
 Questions about the Homebox API or feature requests for the client can be discussed with the Homebox team on [Discord](https://discord.homebox.software). Bug reports and contribution proposals are welcome via GitHub issues and pull requests.
