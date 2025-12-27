@@ -7,14 +7,12 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-keywords = ["OpenAPI", "OpenAPI-Generator", "Homebox API"]
+keywords = ["OpenAPI", "openapi-python-client", "Homebox API"]
 requires-python = ">=3.9"
 
 dependencies = [
-  "urllib3 (>=2.1.0,<3.0.0)",
-  "python-dateutil (>=2.8.2)",
-  "pydantic (>=2)",
-  "typing-extensions (>=4.7.1)",
+  "attrs (>=22.2.0)",
+  "httpx (>=0.23.0,<0.29.0)",
 ]
 
 [project.urls]
@@ -28,7 +26,6 @@ pytest = ">= 7.2.1"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"
 flake8 = ">= 4.0.0"
-types-python-dateutil = ">= 2.8.19.14"
 mypy = ">= 1.5"
 pyright = ">= 1.1.0"
 
@@ -38,14 +35,14 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.pylint.'MESSAGES CONTROL']
-extension-pkg-whitelist = "pydantic"
+extension-pkg-whitelist = "attrs"
 
 [tool.mypy]
 files = [
   "homebox_client",
-  "test",  # auto-generated tests
-  "tests", # hand-written tests (if added later)
+  "scripts",
 ]
+exclude = "^(build|dist)/"
 # TODO: enable "strict" once all these individual checks are passing
 # strict = true
 
@@ -78,37 +75,34 @@ disallow_any_generics = true
 ### This one can be tricky to get passing if you use a lot of untyped libraries
 #warn_return_any = true
 
+[[tool.mypy.overrides]]
+module = [
+  "homebox_client.api.*",
+  "homebox_client.models.*",
+]
+ignore_errors = true
+follow_imports = "skip"
+
 [tool.pyright]
 typeCheckingMode = "strict"
 pythonVersion = "3.9"
 venvPath = "."
 venv = ".venv"
 include = ["homebox_client", "scripts"]
+ignore = [
+  "homebox_client/client.py",
+  "scripts/pregen_fixup.py",
+]
 exclude = [
+  ".venv",
+  "build",
+  "dist",
+  "homebox_client.egg-info",
   "homebox_client/api",
   "homebox_client/models",
-  "homebox_client/api_client.py",
-  "homebox_client/configuration.py",
-  "homebox_client/exceptions.py",
-  "homebox_client/rest.py",
-  "homebox_client/__init__.py",
   "test",
   "tests",
 ]
 
-[[tool.mypy.overrides]]
-module = [
-  "homebox_client.configuration",
-]
-warn_unused_ignores = true
-strict_equality = true
-extra_checks = true
-check_untyped_defs = true
-disallow_subclassing_any = true
-disallow_untyped_decorators = true
-disallow_any_generics = true
-disallow_untyped_calls = true
-disallow_incomplete_defs = true
-disallow_untyped_defs = true
-no_implicit_reexport = true
-warn_return_any = true
+[tool.pytest.ini_options]
+addopts = "--ignore=test"

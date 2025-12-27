@@ -1,13 +1,13 @@
 # homebox-client
 
-`homebox-client` is the typed Python SDK for the Homebox API, the service that helps you track, manage, and organize your belongings. The package is generated from the official OpenAPI specification (`homebox.json`) with OpenAPI Generator 7.16.0 and ships with type-safe Pydantic models and a synchronous HTTP client.
+`homebox-client` is the typed Python SDK for the Homebox API, the service that helps you track, manage, and organize your belongings. The package is generated from the official OpenAPI 3.0 specification (`homebox.json`) with `openapi-python-client` and ships with `attrs`-based models plus HTTPX-powered sync/async clients.
 
 ## Highlights
 
 - Full coverage of the Homebox API 1.0, including authentication, items, locations, labels, reporting, maintenance, and notifier endpoints.
-- Pydantic v2 models with `typing`-friendly method signatures for confident auto-completion and static analysis.
-- Configurable `ApiClient` built on top of `urllib3`, making it straightforward to tune retries, timeouts, and TLS behaviour.
-- Generated documentation for every endpoint and model under `docs/`.
+- `attrs` models with `typing`-friendly method signatures for confident auto-completion and static analysis.
+- Configurable `Client`/`AuthenticatedClient` built on top of HTTPX, making it straightforward to tune timeouts, TLS behaviour, and async usage.
+- Generated API modules grouped under `homebox_client/api` with endpoint-specific helpers.
 
 ## Requirements
 
@@ -40,15 +40,15 @@ It also installs `python-dotenv`, which enables utility scripts to read credenti
 
 ## Configuring the client
 
-The generated client defaults to the public demo environment at `https://demo.homebox.software/api`. Override the host or provide authentication tokens through the `Configuration` object:
+The generated client defaults to whatever `base_url` you pass. Use `Client` for unauthenticated calls and `AuthenticatedClient` once you have a bearer token:
 
 ```python
 import os
-from homebox_client import Configuration
+from homebox_client import Client, AuthenticatedClient
 
-config = Configuration(host=os.getenv("HOMEBOX_API_URL", "https://demo.homebox.software/api"))
-config.api_key["Bearer"] = os.environ["HOMEBOX_TOKEN"]
-config.api_key_prefix["Bearer"] = "Bearer"
+base_url = os.getenv("HOMEBOX_API_URL", "https://demo.homebox.software/api")
+client = Client(base_url=base_url)
+auth_client = AuthenticatedClient(base_url=base_url, token=os.environ["HOMEBOX_TOKEN"])
 ```
 
 > Tip: store long-lived access tokens in a secret manager or environment variable (`HOMEBOX_TOKEN` in the example above) instead of hard-coding them.
@@ -57,56 +57,55 @@ config.api_key_prefix["Bearer"] = "Bearer"
 
 ```python
 import os
-from homebox_client import ApiClient, AuthenticationApi, Configuration, ItemsApi
+from homebox_client import AuthenticatedClient, Client
+from homebox_client.api.authentication import post_v1_users_login
+from homebox_client.api.items import get_v1_items
+from homebox_client.models.v1_login_form import V1LoginForm
+from homebox_client.types import Unset
 
-config = Configuration(host=os.getenv("HOMEBOX_API_URL", "https://demo.homebox.software/api"))
+base_url = os.getenv("HOMEBOX_API_URL", "https://demo.homebox.software/api")
 
 # Acquire a short-lived bearer token (skip this block if you already have one)
-with ApiClient(config) as unauthenticated_client:
-    auth_api = AuthenticationApi(unauthenticated_client)
-    token_response = auth_api.v1_users_login_post(
-        username=os.environ["HOMEBOX_USERNAME"],
-        password=os.environ["HOMEBOX_PASSWORD"],
-        stay_logged_in=True,
-    )
+login_form = V1LoginForm(
+    username=os.environ["HOMEBOX_USERNAME"],
+    password=os.environ["HOMEBOX_PASSWORD"],
+    stay_logged_in=True,
+)
+token_response = post_v1_users_login.sync(client=Client(base_url=base_url), body=login_form)
+if token_response is None or isinstance(token_response.token, Unset):
+    raise RuntimeError("Login failed")
 
-# Persist and apply the token for subsequent requests
-config.api_key["Bearer"] = token_response.token
-config.api_key_prefix["Bearer"] = "Bearer"
+# Use the authenticated client for secured endpoints
+auth_client = AuthenticatedClient(base_url=base_url, token=token_response.token)
+page = get_v1_items.sync(client=auth_client, page_size=5)
 
-with ApiClient(config) as api_client:
-    items_api = ItemsApi(api_client)
-    page = items_api.v1_items_get(page_size=5)
-
-    for item in page.items or []:
+if page and not isinstance(page.items, Unset):
+    for item in page.items:
         print(f"{item.name} (asset: {item.asset_id})")
 ```
 
-### Handling file uploads and downloads
-
-Endpoints such as `ItemsAttachmentsApi` operate on binary payloads. Use the `with ApiClient(...)` context manager to make sure file handles are released, and pass file objects opened in binary mode (`open("photo.jpg", "rb")`) to upload methods. Responses that stream content expose the raw `urllib3` response on `ApiClient.last_response`.
-
 ## Reference documentation
 
-- Endpoint usage guides: `docs/<ApiName>.md` (for example `docs/ItemsApi.md`).
-- Data model reference: `docs/<ModelName>.md`.
 - The original OpenAPI document: `homebox.json`.
+- Models live under `homebox_client/models`.
+- Endpoint modules live under `homebox_client/api`.
 
 ## Regenerating the client
 
-If the upstream API specification changes, regenerate the SDK with OpenAPI Generator:
+If the upstream API specification changes, regenerate the SDK with `openapi-python-client`:
 
 ```sh
-docker run --rm \
-  -v "${PWD}:/local" \
-  openapitools/openapi-generator-cli:v7.16.0 generate \
-  -i /local/homebox.json \
-  -g python \
-  -o /local/generated \
-  --additional-properties=packageName=homebox_client,projectName=homebox-client,packageVersion=1.0.0,pythonAttrNoneIfUnset=true
+cp ../homebox/docs/en/api/openapi-3.0.json homebox.json
+python scripts/pregen_fixup.py homebox.json /tmp/homebox_fixed.json
+openapi-python-client generate \
+  --path /tmp/homebox_fixed.json \
+  --config openapi-python-client.yml \
+  --meta none \
+  --output-path /tmp/homebox_pyclient \
+  --overwrite
+rsync -a /tmp/homebox_pyclient/ homebox_client/
+touch homebox_client/py.typed
 ```
-
-Review the contents of `/local/generated`, then copy the updated modules into this repository (or adjust the output path to overwrite the current package once you have reviewed the changes).
 
 ## Development workflow
 
