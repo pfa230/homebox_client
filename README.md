@@ -21,12 +21,12 @@
 The project is not currently published on PyPI. Install it directly from a clone or a source archive:
 
 ```sh
-git clone https://github.com/<your-org>/homebox-client.git
+git clone https://github.com/pfa230/homebox_client.git
 cd homebox_client
 python -m pip install .
 ```
 
-Replace `<your-org>` with the GitHub organisation or username that hosts your fork. If you are already inside a local checkout, skip the `git clone` command.
+If you are already inside a local checkout, skip the `git clone` command.
 
 ### Editable install for development
 

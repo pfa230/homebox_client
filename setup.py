@@ -36,7 +36,7 @@ setup(
     description="Homebox API",
     author="Homebox Team",
     author_email="team@openapitools.org",
-    url="",
+    url="https://github.com/pfa230/homebox_client",
     keywords=["OpenAPI", "OpenAPI-Generator", "Homebox API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),

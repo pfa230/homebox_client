@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Repository = "https://github.com/pfa230/homebox_client"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
@@ -42,8 +42,8 @@ extension-pkg-whitelist = "pydantic"
 [tool.mypy]
 files = [
   "homebox_client",
-  #"test",  # auto-generated tests
-  "tests", # hand-written tests
+  "test",  # auto-generated tests
+  "tests", # hand-written tests (if added later)
 ]
 # TODO: enable "strict" once all these individual checks are passing
 # strict = true
