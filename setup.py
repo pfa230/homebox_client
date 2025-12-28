@@ -27,6 +27,19 @@ REQUIRES = [
     "attrs >= 22.2.0",
     "httpx >= 0.23.0, < 0.29.0",
 ]
+CLASSIFIERS = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
 
 setup(
     name=NAME,
@@ -37,6 +50,7 @@ setup(
     url="https://github.com/pfa230/homebox_client",
     keywords=["OpenAPI", "openapi-python-client", "Homebox API"],
     license="MIT",
+    classifiers=CLASSIFIERS,
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

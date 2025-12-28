@@ -16,9 +16,15 @@
 
 ## Installation
 
+### From PyPI
+
+```sh
+python -m pip install homebox-client
+```
+
 ### From source
 
-The project is not currently published on PyPI. Install it directly from a clone or a source archive:
+Install directly from a clone or a source archive:
 
 ```sh
 git clone https://github.com/pfa230/homebox_client.git

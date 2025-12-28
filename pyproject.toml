@@ -6,9 +6,22 @@ authors = [
   {name = "pfa230", email = "pfa230@pfa.name"},
 ]
 readme = "README.md"
-license = {text = "MIT"}
+license = {file = "LICENSE"}
 keywords = ["OpenAPI", "openapi-python-client", "Homebox API"]
 requires-python = ">=3.9"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+]
 
 dependencies = [
   "attrs (>=22.2.0)",
@@ -37,6 +50,12 @@ pyright = ">= 1.1.0"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+homebox_client = ["py.typed"]
+
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "attrs"
 
@@ -46,37 +65,7 @@ files = [
   "scripts",
 ]
 exclude = "^(build|dist)/"
-# TODO: enable "strict" once all these individual checks are passing
-# strict = true
-
-# List from: https://mypy.readthedocs.io/en/stable/existing_code.html#introduce-stricter-options
-warn_unused_configs = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-
-## Getting these passing should be easy
-strict_equality = true
-extra_checks = true
-
-## Strongly recommend enabling this one as soon as you can
-check_untyped_defs = true
-
-## These shouldn't be too much additional work, but may be tricky to
-## get passing if you use a lot of untyped libraries
-disallow_subclassing_any = true
-disallow_untyped_decorators = true
-disallow_any_generics = true
-
-### These next few are various gradations of forcing use of type annotations
-#disallow_untyped_calls = true
-#disallow_incomplete_defs = true
-#disallow_untyped_defs = true
-#
-### This one isn't too hard to get passing, but return on investment is lower
-#no_implicit_reexport = true
-#
-### This one can be tricky to get passing if you use a lot of untyped libraries
-#warn_return_any = true
+strict = true
 
 [[tool.mypy.overrides]]
 module = [
