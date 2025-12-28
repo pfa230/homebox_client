@@ -1,6 +1,6 @@
 # homebox-client
 
-`homebox-client` is the typed Python SDK for the Homebox API, the service that helps you track, manage, and organize your belongings. The package is generated from the official OpenAPI 3.0 specification (`homebox.json`) with `openapi-python-client` and ships with `attrs`-based models plus HTTPX-powered sync/async clients.
+`homebox-client` is the typed Python SDK for the Homebox API. The package is generated from the official OpenAPI 3.0 specification (`homebox.json`) with `openapi-python-client` and ships with `attrs`-based models plus HTTPX-powered sync/async clients.
 
 ## Highlights
 
