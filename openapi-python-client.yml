@@ -1,3 +1,4 @@
 package_name_override: homebox_client
 project_name_override: homebox-client
-post_hooks: []
+post_hooks:
+  - .venv/bin/python scripts/postgen_fixup.py

@@ -11,9 +11,9 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_template_field import EntTemplateField
   from ..models.ent_location import EntLocation
   from ..models.ent_group import EntGroup
+  from ..models.ent_template_field import EntTemplateField
 
 
 
@@ -42,9 +42,9 @@ class EntItemTemplateEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_template_field import EntTemplateField
         from ..models.ent_location import EntLocation
         from ..models.ent_group import EntGroup
+        from ..models.ent_template_field import EntTemplateField
         fields: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.fields, Unset):
             fields = []
@@ -80,9 +80,9 @@ class EntItemTemplateEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_template_field import EntTemplateField
         from ..models.ent_location import EntLocation
         from ..models.ent_group import EntGroup
+        from ..models.ent_template_field import EntTemplateField
         d = dict(src_dict)
         fields = []
         _fields = d.pop("fields", UNSET)
