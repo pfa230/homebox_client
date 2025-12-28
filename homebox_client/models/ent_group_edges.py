@@ -11,13 +11,13 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_group_invitation_token import EntGroupInvitationToken
-  from ..models.ent_location import EntLocation
   from ..models.ent_item_template import EntItemTemplate
+  from ..models.ent_location import EntLocation
+  from ..models.ent_notifier import EntNotifier
   from ..models.ent_user import EntUser
   from ..models.ent_label import EntLabel
+  from ..models.ent_group_invitation_token import EntGroupInvitationToken
   from ..models.ent_item import EntItem
-  from ..models.ent_notifier import EntNotifier
 
 
 
@@ -56,13 +56,13 @@ class EntGroupEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_group_invitation_token import EntGroupInvitationToken
-        from ..models.ent_location import EntLocation
         from ..models.ent_item_template import EntItemTemplate
+        from ..models.ent_location import EntLocation
+        from ..models.ent_notifier import EntNotifier
         from ..models.ent_user import EntUser
         from ..models.ent_label import EntLabel
+        from ..models.ent_group_invitation_token import EntGroupInvitationToken
         from ..models.ent_item import EntItem
-        from ..models.ent_notifier import EntNotifier
         invitation_tokens: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.invitation_tokens, Unset):
             invitation_tokens = []
@@ -152,13 +152,13 @@ class EntGroupEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_group_invitation_token import EntGroupInvitationToken
-        from ..models.ent_location import EntLocation
         from ..models.ent_item_template import EntItemTemplate
+        from ..models.ent_location import EntLocation
+        from ..models.ent_notifier import EntNotifier
         from ..models.ent_user import EntUser
         from ..models.ent_label import EntLabel
+        from ..models.ent_group_invitation_token import EntGroupInvitationToken
         from ..models.ent_item import EntItem
-        from ..models.ent_notifier import EntNotifier
         d = dict(src_dict)
         invitation_tokens = []
         _invitation_tokens = d.pop("invitation_tokens", UNSET)

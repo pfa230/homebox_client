@@ -11,9 +11,9 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.services_latest import ServicesLatest
   from ..models.v1_build import V1Build
   from ..models.v1oidc_status import V1OIDCStatus
+  from ..models.services_latest import ServicesLatest
 
 
 
@@ -56,9 +56,9 @@ class V1APISummary:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.services_latest import ServicesLatest
         from ..models.v1_build import V1Build
         from ..models.v1oidc_status import V1OIDCStatus
+        from ..models.services_latest import ServicesLatest
         allow_registration = self.allow_registration
 
         build: Union[Unset, dict[str, Any]] = UNSET
@@ -121,9 +121,9 @@ class V1APISummary:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.services_latest import ServicesLatest
         from ..models.v1_build import V1Build
         from ..models.v1oidc_status import V1OIDCStatus
+        from ..models.services_latest import ServicesLatest
         d = dict(src_dict)
         allow_registration = d.pop("allowRegistration", UNSET)
 

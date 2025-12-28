@@ -11,8 +11,8 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_user import EntUser
   from ..models.ent_auth_roles import EntAuthRoles
+  from ..models.ent_user import EntUser
 
 
 
@@ -39,8 +39,8 @@ class EntAuthTokensEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_user import EntUser
         from ..models.ent_auth_roles import EntAuthRoles
+        from ..models.ent_user import EntUser
         roles: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.roles, Unset):
             roles = self.roles.to_dict()
@@ -65,8 +65,8 @@ class EntAuthTokensEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_user import EntUser
         from ..models.ent_auth_roles import EntAuthRoles
+        from ..models.ent_user import EntUser
         d = dict(src_dict)
         _roles = d.pop("roles", UNSET)
         roles: Union[Unset, EntAuthRoles]

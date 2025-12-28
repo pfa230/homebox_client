@@ -11,8 +11,8 @@ from typing import cast
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.ent_location import EntLocation
   from ..models.ent_group import EntGroup
+  from ..models.ent_location import EntLocation
   from ..models.ent_item import EntItem
 
 
@@ -44,8 +44,8 @@ class EntLocationEdges:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.ent_location import EntLocation
         from ..models.ent_group import EntGroup
+        from ..models.ent_location import EntLocation
         from ..models.ent_item import EntItem
         children: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.children, Unset):
@@ -93,8 +93,8 @@ class EntLocationEdges:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ent_location import EntLocation
         from ..models.ent_group import EntGroup
+        from ..models.ent_location import EntLocation
         from ..models.ent_item import EntItem
         d = dict(src_dict)
         children = []

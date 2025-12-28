@@ -12,11 +12,11 @@ from typing import cast, Union
 from typing import Union
 
 if TYPE_CHECKING:
-  from ..models.repo_item_attachment import RepoItemAttachment
-  from ..models.repo_label_summary import RepoLabelSummary
   from ..models.repo_location_summary import RepoLocationSummary
-  from ..models.repo_item_field import RepoItemField
+  from ..models.repo_label_summary import RepoLabelSummary
+  from ..models.repo_item_attachment import RepoItemAttachment
   from ..models.repo_item_summary import RepoItemSummary
+  from ..models.repo_item_field import RepoItemField
 
 
 
@@ -101,11 +101,11 @@ class RepoItemOut:
 
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.repo_item_attachment import RepoItemAttachment
-        from ..models.repo_label_summary import RepoLabelSummary
         from ..models.repo_location_summary import RepoLocationSummary
-        from ..models.repo_item_field import RepoItemField
+        from ..models.repo_label_summary import RepoLabelSummary
+        from ..models.repo_item_attachment import RepoItemAttachment
         from ..models.repo_item_summary import RepoItemSummary
+        from ..models.repo_item_field import RepoItemField
         archived = self.archived
 
         asset_id = self.asset_id
@@ -283,11 +283,11 @@ class RepoItemOut:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.repo_item_attachment import RepoItemAttachment
-        from ..models.repo_label_summary import RepoLabelSummary
         from ..models.repo_location_summary import RepoLocationSummary
-        from ..models.repo_item_field import RepoItemField
+        from ..models.repo_label_summary import RepoLabelSummary
+        from ..models.repo_item_attachment import RepoItemAttachment
         from ..models.repo_item_summary import RepoItemSummary
+        from ..models.repo_item_field import RepoItemField
         d = dict(src_dict)
         archived = d.pop("archived", UNSET)
 

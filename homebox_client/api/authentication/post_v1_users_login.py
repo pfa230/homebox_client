@@ -17,10 +17,7 @@ from typing import Union
 
 def _get_kwargs(
     *,
-    body: Union[
-        V1LoginForm,
-        V1LoginForm,
-    ],
+    body: V1LoginForm,
     provider: Union[Unset, str] = UNSET,
 
 ) -> dict[str, Any]:
@@ -43,15 +40,10 @@ def _get_kwargs(
         "params": params,
     }
 
-    if isinstance(body, V1LoginForm):
-        _kwargs["data"] = body.to_dict()
-
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, V1LoginForm):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
 
-        headers["Content-Type"] = "application/json"
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -84,10 +76,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        V1LoginForm,
-        V1LoginForm,
-    ],
+    body: V1LoginForm,
     provider: Union[Unset, str] = UNSET,
 
 ) -> Response[V1TokenResponse]:
@@ -95,7 +84,6 @@ def sync_detailed(
 
     Args:
         provider (Union[Unset, str]):
-        body (V1LoginForm):
         body (V1LoginForm):
 
     Raises:
@@ -122,10 +110,7 @@ provider=provider,
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        V1LoginForm,
-        V1LoginForm,
-    ],
+    body: V1LoginForm,
     provider: Union[Unset, str] = UNSET,
 
 ) -> Optional[V1TokenResponse]:
@@ -133,7 +118,6 @@ def sync(
 
     Args:
         provider (Union[Unset, str]):
-        body (V1LoginForm):
         body (V1LoginForm):
 
     Raises:
@@ -155,10 +139,7 @@ provider=provider,
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        V1LoginForm,
-        V1LoginForm,
-    ],
+    body: V1LoginForm,
     provider: Union[Unset, str] = UNSET,
 
 ) -> Response[V1TokenResponse]:
@@ -166,7 +147,6 @@ async def asyncio_detailed(
 
     Args:
         provider (Union[Unset, str]):
-        body (V1LoginForm):
         body (V1LoginForm):
 
     Raises:
@@ -193,10 +173,7 @@ provider=provider,
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        V1LoginForm,
-        V1LoginForm,
-    ],
+    body: V1LoginForm,
     provider: Union[Unset, str] = UNSET,
 
 ) -> Optional[V1TokenResponse]:
@@ -204,7 +181,6 @@ async def asyncio(
 
     Args:
         provider (Union[Unset, str]):
-        body (V1LoginForm):
         body (V1LoginForm):
 
     Raises:

@@ -5,6 +5,7 @@
 
 - Deduplicate enum values (and align x-enum-varnames when present)
 - Normalize known wildcard response content types
+- Normalize known request content types
 """
 
 from __future__ import annotations
@@ -55,6 +56,10 @@ _RESPONSE_CONTENT_TYPE_OVERRIDES: dict[tuple[str, str, str], str] = {
     ("put", "/v1/notifiers/{id}", "200"): "application/json",
 }
 
+_REQUEST_CONTENT_TYPES_ALLOWED: dict[tuple[str, str], set[str]] = {
+    ("post", "/v1/users/login"): {"application/json"},
+}
+
 
 def _override_response_content_types(doc: dict[str, Any]) -> None:
     paths = doc.get("paths")
@@ -83,6 +88,31 @@ def _override_response_content_types(doc: dict[str, Any]) -> None:
             content[override] = content.pop("*/*")
 
 
+def _normalize_request_content_types(doc: dict[str, Any]) -> None:
+    paths = doc.get("paths")
+    if not isinstance(paths, dict):
+        return
+
+    for path, operations in paths.items():
+        if not isinstance(operations, dict):
+            continue
+        for method, operation in operations.items():
+            if not isinstance(operation, dict):
+                continue
+            allowed = _REQUEST_CONTENT_TYPES_ALLOWED.get((method.lower(), path))
+            if not allowed:
+                continue
+            request_body = operation.get("requestBody")
+            if not isinstance(request_body, dict):
+                continue
+            content = request_body.get("content")
+            if not isinstance(content, dict):
+                continue
+            for content_type in list(content.keys()):
+                if content_type not in allowed:
+                    content.pop(content_type, None)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Preprocess Homebox OpenAPI JSON for generation.")
     parser.add_argument("input", type=Path, help="Input OpenAPI JSON")
@@ -92,6 +122,7 @@ def main() -> int:
     data = json.loads(args.input.read_text())
     _walk_enums(data)
     _override_response_content_types(data)
+    _normalize_request_content_types(data)
 
     args.output.write_text(json.dumps(data, indent=2) + "\n")
     return 0

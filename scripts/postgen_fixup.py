@@ -47,7 +47,7 @@ def _patch_auth_header_assignments(contents: str) -> str:
 
 
 def main() -> int:
-    target = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("homebox_client/client.py")
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("client.py")
     if not target.exists():
         raise FileNotFoundError(f"Expected generated client file at {target}")
 
