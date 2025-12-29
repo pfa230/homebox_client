@@ -1,6 +1,9 @@
 name: homebox_client CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_call:
 
 permissions:
   contents: read
