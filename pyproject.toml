@@ -1,6 +1,6 @@
 [project]
 name = "homebox-client"
-version = "1.0.0"
+dynamic = ["version"]
 description = "Homebox API client"
 authors = [
   {name = "pfa230", email = "pfa230@pfa.name"},
@@ -47,8 +47,13 @@ pyright = ">= 1.1.0"
 
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools_scm[toml]"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0"
+version_scheme = "no-guess-dev"
+local_scheme = "no-local-version"
 
 [tool.setuptools]
 include-package-data = true

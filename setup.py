@@ -14,6 +14,11 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
+try:
+    from setuptools_scm import get_version
+except Exception:  # pragma: no cover - fallback for legacy installs
+    get_version = None
+
 # To install the library, run the following
 #
 # python setup.py install
@@ -21,7 +26,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "homebox-client"
-VERSION = "1.0.0"
+VERSION = get_version(root=".", relative_to=__file__) if get_version else "0.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "attrs >= 22.2.0",
